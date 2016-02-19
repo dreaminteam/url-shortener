@@ -8,9 +8,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(name = "tag")
+@Table(name = "tag", uniqueConstraints = @UniqueConstraint(columnNames = "title") )
 public class Tag implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -20,7 +21,7 @@ public class Tag implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
-	@Column(name = "title")
+	@Column(name = "title", unique = true, nullable = false)
 	private String title;
 
 	public Long getId() {

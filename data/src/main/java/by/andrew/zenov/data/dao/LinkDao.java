@@ -1,22 +1,9 @@
 package by.andrew.zenov.data.dao;
 
-import java.util.List;
+import com.googlecode.genericdao.dao.hibernate.GenericDAO;
 
 import by.andrew.zenov.data.model.Link;
 
-public interface LinkDao {
+public interface LinkDao extends GenericDAO<Link, String>{
 	
-	Link get(String shortUrl);
-	
-	Long insert(Link reference);
-	
-	void update(Link reference);
-	
-	void delete(String shortUrl);
-	
-	List<Link> getAll();
-	
-	List<Link> getAll(long first, long count);
-
-	Long getCount();
 }

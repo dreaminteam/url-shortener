@@ -1,23 +1,9 @@
 package by.andrew.zenov.data.dao;
 
-import java.util.List;
+import com.googlecode.genericdao.dao.hibernate.GenericDAO;
 
 import by.andrew.zenov.data.model.Tag;
 
-public interface TagDao {
+public interface TagDao extends GenericDAO<Tag, Long>{
 	
-	Tag get(Long id);
-	
-	Long insert(Tag tag);
-	
-	void update(Tag tag);
-	
-	void delete(Long id);
-	
-	List<Tag> getAll();
-	
-	List<Tag> getAll(long first, long count);
-
-	Long getCount();
-
 }

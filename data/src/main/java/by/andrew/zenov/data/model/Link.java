@@ -20,7 +20,7 @@ public class Link implements Serializable{
     @Column(name="shortUrl")
 	private String shortUrl;
 	
-	@Column(name="sourceUrl")
+	@Column(name="sourceUrl", nullable = false)
 	private String sourceUrl;
 	
 	@Column(name="description")
