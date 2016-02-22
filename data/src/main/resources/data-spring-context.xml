@@ -10,10 +10,7 @@
 	    http://www.springframework.org/schema/tx/spring-tx-4.2.xsd">
 
 
-	<context:component-scan base-package="by.andrew.zenov.data" />
-
-	<!-- <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate"> 
-		<constructor-arg ref="dataSource" /> </bean> -->
+	<context:component-scan base-package="by.andrew.zenov.data.dao" />
 
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName" value="${jdbc.driver}" />
@@ -25,39 +22,16 @@
 	<context:property-placeholder
 		ignore-unresolvable="true" location="classpath:app.properties" />
 
-	<bean id="sessionFactory"
-		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+
+
+	<bean id="entityManagerFactory"
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="persistenceUnitName" value="testPU" />
 		<property name="dataSource" ref="dataSource" />
-		<property name="packagesToScan" value="by.andrew.zenov.data" />
-		<property name="annotatedPackages" value="by.andrew.zenov.data" />
-		<!-- property name="annotatedClasses"> <list> <value>net.dirong.hgs.demo.entity.User</value> 
-			</list> </property> <property name="annotatedPackages"> <list> <value>net.dirong.hgs.demo.entity</value> 
-			</list> </property> -->
-
-		<!-- <property name="configurationClass" value="org.hibernate.cfg.AnnotationConfiguration" 
-			/> -->
-		<property name="hibernateProperties">
-			<props>
-				<prop key="hibernate.dialect">
-					${jdbc.dialect}
-				</prop>
-				<prop key="hibernate.show_sql">
-					${hibernate.show_sql}
-				</prop>
-			</props>
-		</property>
 	</bean>
 
-	<bean id="searchFacade"
-		class="com.googlecode.genericdao.search.hibernate.HibernateSearchFacade">
-		<property name="sessionFactory" ref="sessionFactory" />
-	</bean>
-
-	<tx:annotation-driven transaction-manager="transactionManager" />
-
-	<bean id="transactionManager"
-		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
-		<property name="sessionFactory" ref="sessionFactory" />
+	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory" ref="entityManagerFactory" />
 	</bean>
 
 </beans>

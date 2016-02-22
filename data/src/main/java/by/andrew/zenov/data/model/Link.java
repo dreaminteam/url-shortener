@@ -26,7 +26,7 @@ public class Link implements Serializable {
 	@Column(name = "description", nullable = true, length = 10000)
 	private String description;
 
-	@Column(name = "clickCount")
+	@Column(name = "clickCount", nullable = true)
 	private Long clickCount;
 
 	@OneToMany

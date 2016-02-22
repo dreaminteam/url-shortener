@@ -1,12 +1,12 @@
-package by.andrew.zenov.data.dao;
+package by.andrew.zenov.service;
 
 import java.util.List;
 
 import by.andrew.zenov.data.model.User;
 
-public interface UserDao{
+public interface UserService { 
 
-	User get(Long id);
+User get(Long id);
 	
 	List<User> getAll();
 	
