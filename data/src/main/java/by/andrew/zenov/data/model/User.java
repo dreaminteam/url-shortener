@@ -24,10 +24,10 @@ public class User implements Serializable {
 	@Column(name = "login", unique = true, nullable = false, length = 20)
 	private String login;
 
-	@Column(name = "password", nullable = false)
+	@Column(name = "password", nullable = false, length = 40)
 	private String password;
 
-	@Column(name = "email")
+	@Column(name = "email",nullable = false, length = 60)
 	private String email;
 
 	public Long getId() {

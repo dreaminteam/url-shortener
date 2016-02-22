@@ -49,11 +49,8 @@
 				<artifactId>spring-core</artifactId>
 				<version>${spring.version}</version>
 			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-jdbc</artifactId>
-				<version>${spring.version}</version>
-			</dependency>
+			<!-- <dependency> <groupId>org.springframework</groupId> <artifactId>spring-jdbc</artifactId> 
+				<version>${spring.version}</version> </dependency> -->
 			<dependency>
 				<groupId>org.springframework</groupId>
 				<artifactId>spring-beans</artifactId>
@@ -69,7 +66,42 @@
 				<artifactId>spring-context-support</artifactId>
 				<version>${spring.version}</version>
 			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-orm</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-web</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
 
+
+			<!-- hibernate -->
+			<dependency>
+				<groupId>org.hibernate</groupId>
+				<artifactId>hibernate-core</artifactId>
+				<version>${hibernate.core.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.hibernate</groupId>
+				<artifactId>hibernate-annotations</artifactId>
+				<version>${hibernate.annotations.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.googlecode.genericdao</groupId>
+				<artifactId>dao-hibernate</artifactId>
+				<version>${hibernate.genericdao.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.googlecode.genericdao</groupId>
+				<artifactId>search-jpa-hibernate</artifactId>
+				<version>${hibernate.genericdao.version}</version>
+			</dependency>
 
 
 			<dependency>
@@ -132,38 +164,6 @@
 				<artifactId>commons-codec</artifactId>
 				<version>1.9</version>
 			</dependency>
-
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-web</artifactId>
-				<version>${spring.version}</version>
-			</dependency>
-
-			<!-- hibernate -->
-			<dependency>
-				<groupId>org.hibernate</groupId>
-				<artifactId>hibernate-core</artifactId>
-				<version>${hibernate.core.version}</version>
-			</dependency>
-
-			<dependency>
-				<groupId>org.hibernate</groupId>
-				<artifactId>hibernate-annotations</artifactId>
-				<version>${hibernate.annotations.version}</version>
-			</dependency>
-
-			<dependency>
-				<groupId>com.googlecode.genericdao</groupId>
-				<artifactId>dao-hibernate</artifactId>
-				<version>${hibernate.genericdao.version}</version>
-			</dependency>
-
-			<dependency>
-				<groupId>com.googlecode.genericdao</groupId>
-				<artifactId>search-jpa-hibernate</artifactId>
-				<version>${hibernate.genericdao.version}</version>
-			</dependency>
-
 
 		</dependencies>
 	</dependencyManagement>
