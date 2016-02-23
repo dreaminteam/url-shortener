@@ -5,9 +5,11 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -17,20 +19,20 @@ public class Link implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name = "shortUrl")
+	@Column(name = "link_id", length = 10)
 	private String shortUrl;
 
-	@Column(name = "sourceUrl", nullable = false, length = 1000)
+	@Column(name = "source_url", nullable = false, length = 1000)
 	private String sourceUrl;
 
 	@Column(name = "description", nullable = true, length = 10000)
 	private String description;
 
-	@Column(name = "clickCount", nullable = true)
+	@Column(name = "click_count", nullable = true)
 	private Long clickCount;
 
-	@OneToMany
-	@JoinColumn(name = "tag")
+	@ManyToMany(fetch = FetchType.EAGER)
+	@JoinTable(name = "tag_link", joinColumns = @JoinColumn(name = "tag_id") , inverseJoinColumns = @JoinColumn(name = "link_id") )
 	private Set<Tag> tags;
 
 	public String getShortUrl() {

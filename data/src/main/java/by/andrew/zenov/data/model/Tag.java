@@ -17,7 +17,7 @@ public class Tag implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name = "id")
+	@Column(name = "tag_id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 

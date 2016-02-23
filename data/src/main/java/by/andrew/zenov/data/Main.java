@@ -7,7 +7,7 @@ public class Main {
 
 	public static void main(String[] args) {
 
-		ApplicationContext aContext = new ClassPathXmlApplicationContext("data-spring-context.xml");
-		
+		ApplicationContext ctx = new ClassPathXmlApplicationContext("data-spring-context.xml");
+		System.out.println("END");
 	}
 }
