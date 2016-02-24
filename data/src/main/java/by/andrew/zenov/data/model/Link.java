@@ -19,7 +19,7 @@ public class Link implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name = "link_id", length = 10)
+	@Column(name = "short_url", length = 10)
 	private String shortUrl;
 
 	@Column(name = "source_url", nullable = false, length = 1000)

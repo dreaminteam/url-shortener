@@ -9,6 +9,6 @@
 
 	<import resource="classpath:data-spring-context.xml" />
 
-	<context:component-scan base-package="by.andrew.zenov.service" />
+	<context:component-scan base-package="by.andrew.zenov" />
 
 </beans>
