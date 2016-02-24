@@ -1,5 +1,7 @@
 package by.andrew.zenov.data;
 
+import java.util.List;
+
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -22,8 +24,11 @@ public class Main {
 
 		System.out.println(user1);
 
-		userDao.insert(user1);
-		User user=userDao.get(2L);
+//		userDao.insert(user1);
+		User user=userDao.get(1L);
 		System.out.println(user);
+		
+		List<User> users=userDao.getAll();
+		System.out.println(users);
 	}
 }

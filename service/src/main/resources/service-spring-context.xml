@@ -11,4 +11,8 @@
 
 	<context:component-scan base-package="by.andrew.zenov" />
 
+	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory" ref="entityManagerFactory" />
+	</bean>
+
 </beans>
