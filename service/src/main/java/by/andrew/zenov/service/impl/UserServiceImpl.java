@@ -10,7 +10,7 @@ import by.andrew.zenov.data.dao.UserDao;
 import by.andrew.zenov.data.model.User;
 import by.andrew.zenov.service.UserService;
 
-@Service(value="UserService")
+@Service(value="userService")
 public class UserServiceImpl implements UserService {
 
 	@Autowired
