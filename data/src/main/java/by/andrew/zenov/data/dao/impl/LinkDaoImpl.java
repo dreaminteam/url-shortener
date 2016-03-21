@@ -5,10 +5,10 @@ import org.springframework.stereotype.Repository;
 
 import by.andrew.zenov.data.dao.LinkDao;
 
-@Repository(value = "LinkDao")
+@Repository(value = "linkDao")
 public class LinkDaoImpl extends AbstractDao<Link, String> implements LinkDao {
 
-    public LinkDaoImpl(){
+    public LinkDaoImpl() {
         setEntityClass(Link.class);
     }
 

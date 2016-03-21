@@ -14,13 +14,17 @@ import java.util.List;
  */
 public abstract class AbstractDao<T, K> implements Dao<T, K> {
 
-    private Class<T> entityClass;
-
     @PersistenceContext
     private EntityManager entityManager;
 
+    private Class<T> entityClass;
+
     public void setEntityClass(Class<T> entityClass) {
         this.entityClass = entityClass;
+    }
+
+    public Class<T> getEntityClass() {
+        return entityClass;
     }
 
     @Override
@@ -38,8 +42,8 @@ public abstract class AbstractDao<T, K> implements Dao<T, K> {
     }
 
     @Override
-    public void delete(K id) {
-        entityManager.remove(id);
+    public void delete(T entity) {
+        entityManager.remove(entity);
     }
 
     @Override

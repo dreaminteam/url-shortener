@@ -5,9 +5,9 @@ import by.andrew.zenov.data.model.User;
 import org.springframework.stereotype.Repository;
 
 @Repository(value = "userDao")
-public class UserDaoImpl extends AbstractDao<User,Long> implements UserDao {
+public class UserDaoImpl extends AbstractDao<User, Long> implements UserDao {
 
-   public UserDaoImpl(){
-       setEntityClass(User.class);
-   }
+    public UserDaoImpl() {
+        setEntityClass(User.class);
+    }
 }

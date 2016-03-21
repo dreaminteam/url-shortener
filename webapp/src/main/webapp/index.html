@@ -1,39 +1,24 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/html">
 <head>
-	<meta charset="utf-8">
-	<title>HTML5 Contact Form</title>
-	<link rel="stylesheet" media="screen" href="styles.css" >
+    <title>Example :: Spring Application</title>
 </head>
 <body>
-<form class="contact_form" action="#" method="post" name="contact_form">
-    <ul>
-        <li>
-             <h2>Contact Us</h2>
-             <span class="required_notification">* Denotes Required Field</span>
-        </li>
-        <li>
-            <label for="name">Name:</label>
-            <input type="text"  placeholder="John Doe" required />
-        </li>
-        <li>
-            <label for="email">Email:</label>
-            <input type="email" name="email" placeholder="john_doe@example.com" required />
-            <span class="form_hint">Proper format "name@something.com"</span>
-        </li>
-        <li>
-            <label for="website">Website:</label>
-            <input type="url" name="website" placeholder="http://johndoe.com" required pattern="(http|https)://.+"/>
-            <span class="form_hint">Proper format "http://someaddress.com"</span>
-        </li>
-        <li>
-            <label for="message">Message:</label>
-            <textarea name="message" cols="40" rows="6" required ></textarea>
-        </li>
-        <li>
-        	<button class="submit" type="submit">Submit Form</button>
-        </li>
-    </ul>
-</form>
+<h1>Example - Spring Application</h1>
+<p>This is my test.</p>
+
+<a href="./rest/users">users</a></br>
+<a href="./rest/users/str">str</a></br>
+<a href="./rest/users/post">post</a></br>
+
+<form action= "./rest/users/" method= "GET"> 
+ <p>Id: </p><p> <input type= "text" name= "id"> </p> 
+ <input type= "submit" value= "Отправить"> 
+
+<a href="./rest/users/1">user 1</a></br>
+<a href="./rest/users/2">user 2</a></br>
+<a href="./rest/users/3">user 3</a></br>
+<a href="./rest/users/4">user 4</a></br>
+
 </body>
 </html>

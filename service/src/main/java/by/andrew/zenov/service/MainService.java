@@ -1,37 +1,33 @@
 package by.andrew.zenov.service;
 
+import by.andrew.zenov.data.model.User;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import by.andrew.zenov.data.model.User;
+import java.util.List;
 
 public class MainService {
 
-	
 
-	public static void main(String[] args) {
+    public static void main(String[] args) {
 
-		ApplicationContext ctx = new ClassPathXmlApplicationContext("service-spring-context.xml");
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("service-spring-context.xml");
 
-		String[] beans=ctx.getBeanDefinitionNames();
-		for(String bean:beans){
-			System.out.println(bean);
-		}
-		System.out.println("END");
+        UserService userService = (UserService) ctx.getBean("userService");
 
-		UserService userService=(UserService)ctx.getBean("UserService");
-		
-		User user1 = new User();
+        User user = new User();
 
-		user1.setLogin("login");
-		user1.setPassword("123");
-		user1.setEmail("email");
+        user.setLogin("log123");
+        user.setPassword("123");
+        user.setEmail("email");
 
-		System.out.println(user1);
+        System.out.println(user);
 
-		userService.insert(user1);
-		User user=userService.get(2L);
-		System.out.println(user);
-	}
+        userService.insert(user);
+
+        List<User> users = userService.getAll();
+        System.out.println(users);
+    }
 
 }
+
