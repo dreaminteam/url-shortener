@@ -10,7 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.Table;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Link implements Serializable {
@@ -30,8 +30,12 @@ public class Link implements Serializable {
 	@Column(name = "click_count", nullable = true)
 	private Long clickCount;
 
+	@ManyToOne
+	@JoinColumn(name = "user_id", nullable = true)
+	private User user;
+
 	@ManyToMany(fetch = FetchType.EAGER)
-	@JoinTable(name = "tag_link", joinColumns = @JoinColumn(name = "short_url") , inverseJoinColumns = @JoinColumn(name = "tag_id") )
+	@JoinTable(name = "tag_link", joinColumns = @JoinColumn(name = "short_url"), inverseJoinColumns = @JoinColumn(name = "tag_id"))
 	private Set<Tag> tags;
 
 	public String getShortUrl() {
@@ -66,6 +70,14 @@ public class Link implements Serializable {
 		this.clickCount = clickCount;
 	}
 
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
 	public Set<Tag> getTags() {
 		return tags;
 	}
@@ -74,21 +86,23 @@ public class Link implements Serializable {
 		this.tags = tags;
 	}
 
-
 	@Override
 	public boolean equals(Object o) {
-		if (this == o) return true;
-		if (o == null || getClass() != o.getClass()) return false;
+		if (this == o)
+			return true;
+		if (o == null || getClass() != o.getClass())
+			return false;
 		Link link = (Link) o;
-		return com.google.common.base.Objects.equal(shortUrl, link.shortUrl) &&
-				com.google.common.base.Objects.equal(sourceUrl, link.sourceUrl) &&
-				com.google.common.base.Objects.equal(description, link.description) &&
-				com.google.common.base.Objects.equal(clickCount, link.clickCount) &&
-				com.google.common.base.Objects.equal(tags, link.tags);
+		return com.google.common.base.Objects.equal(shortUrl, link.shortUrl)
+				&& com.google.common.base.Objects.equal(sourceUrl, link.sourceUrl)
+				&& com.google.common.base.Objects.equal(description, link.description)
+				&& com.google.common.base.Objects.equal(clickCount, link.clickCount)
+				&& com.google.common.base.Objects.equal(user, link.user)
+				&& com.google.common.base.Objects.equal(tags, link.tags);
 	}
 
 	@Override
 	public int hashCode() {
-		return com.google.common.base.Objects.hashCode(shortUrl, sourceUrl, description, clickCount, tags);
+		return com.google.common.base.Objects.hashCode(shortUrl, sourceUrl, description, clickCount, user, tags);
 	}
 }

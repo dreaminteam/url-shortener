@@ -29,7 +29,10 @@ CREATE TABLE IF NOT EXISTS `shortener`.`link` (
   `source_url` VARCHAR(1000) NOT NULL COMMENT '',
   `description` VARCHAR(10000) NULL COMMENT '',
   `click_count` BIGINT NULL COMMENT '',
+  `user_id` bigint NOT NULL,
   PRIMARY KEY (`short_url`)  COMMENT '',
+  KEY `fk_link_user_idx` (`user_id`),
+  CONSTRAINT `fk_link_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   UNIQUE INDEX `short_url_UNIQUE` (`short_url` ASC)  COMMENT '')
 ENGINE = InnoDB;
 
@@ -50,6 +53,25 @@ CREATE TABLE IF NOT EXISTS `shortener`.`tag_link` (
     REFERENCES `shortener`.`link` (`short_url`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
+    ENGINE = InnoDB;
+
+CREATE TABLE IF NOT EXISTS `shortener`.`user_link` (
+  `user_id` BIGINT NOT NULL COMMENT '',
+  `short_url` VARCHAR(10) NOT NULL COMMENT '',
+  INDEX `fk_user_link_user_idx` (`user_id` ASC)  COMMENT '',
+  INDEX `fk_user_link_link1_idx` (`short_url` ASC)  COMMENT '',
+  PRIMARY KEY (`user_id`, `short_url`)  COMMENT '',
+  CONSTRAINT `fk_user_link_user`
+    FOREIGN KEY (`user_id`)
+    REFERENCES `shortener`.`user` (`user_id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_user_link_link1`
+    FOREIGN KEY (`short_url`)
+    REFERENCES `shortener`.`link` (`short_url`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+    UNIQUE INDEX `short_url_UNIQUE` (`short_url` ASC)  COMMENT '')
 ENGINE = InnoDB;
 
 
