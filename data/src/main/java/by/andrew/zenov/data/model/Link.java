@@ -30,8 +30,8 @@ public class Link implements Serializable {
 	@Column(name = "click_count", nullable = true)
 	private Long clickCount;
 
-	@ManyToOne
-	@JoinColumn(name = "user_id", nullable = true)
+	@ManyToOne(optional=false,fetch=FetchType.EAGER)
+	@JoinColumn(name = "user_id")
 	private User user;
 
 	@ManyToMany(fetch = FetchType.EAGER)
@@ -70,6 +70,8 @@ public class Link implements Serializable {
 		this.clickCount = clickCount;
 	}
 
+//	@ManyToOne
+//	@JoinColumn(name = "user_id")
 	public User getUser() {
 		return user;
 	}
@@ -97,12 +99,14 @@ public class Link implements Serializable {
 				&& com.google.common.base.Objects.equal(sourceUrl, link.sourceUrl)
 				&& com.google.common.base.Objects.equal(description, link.description)
 				&& com.google.common.base.Objects.equal(clickCount, link.clickCount)
-				&& com.google.common.base.Objects.equal(user, link.user)
+//				&& com.google.common.base.Objects.equal(user1, link.user1)
 				&& com.google.common.base.Objects.equal(tags, link.tags);
 	}
 
 	@Override
 	public int hashCode() {
-		return com.google.common.base.Objects.hashCode(shortUrl, sourceUrl, description, clickCount, user, tags);
+		return com.google.common.base.Objects.hashCode(shortUrl, sourceUrl, description, clickCount,
+//				user1,
+				tags);
 	}
 }

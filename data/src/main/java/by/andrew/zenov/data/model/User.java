@@ -1,16 +1,16 @@
 package by.andrew.zenov.data.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
@@ -35,8 +35,9 @@ public class User implements Serializable {
 	@Column(name = "email", nullable = false, length = 60)
 	private String email;
 
-	@OneToMany(fetch = FetchType.EAGER)
-	@JoinTable(name = "user_link", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "short_url"))
+	@OneToMany(fetch=FetchType.EAGER,cascade=CascadeType.ALL,mappedBy="user")
+	// @JoinTable(name = "user_link", joinColumns = @JoinColumn(name =
+	// "user_id"), inverseJoinColumns = @JoinColumn(name = "short_url"))
 	private List<Link> links;
 
 	public Long getId() {
@@ -71,6 +72,8 @@ public class User implements Serializable {
 		this.email = email;
 	}
 
+//	@OneToMany(fetch = FetchType.EAGER,cascade=CascadeType.ALL, mappedBy = "")
+	
 	public List<Link> getLinks() {
 		return links;
 	}
